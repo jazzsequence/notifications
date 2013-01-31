@@ -72,23 +72,39 @@ function notf_change_default_title( $title ){
 }
 add_filter( 'enter_title_here', 'notf_change_default_title' );
 
-
-function notf_display() {
+function notf_message() {
 	$args = array(
 		'post_type' => 'notf_notifications',
 		'posts_per_page' => 1,
 		);
 	$notifications = get_posts( $args );
 	foreach ( $notifications as $notification ) {
-		//$message = $notification['post_title'];
-		//$message .= var_dump($nofification);
-		//var_dump($notification);
 		$notf_id = $notification->ID;
 		$message = get_the_title( $notf_id );
-		echo '<div class="notification">' . $message . '</div>';
 	}
+	return $message;
+}
+
+function notf_output_notification() {
+	$wrapper_open = '<div class="notification">';
+	$output = '<div class="notification">' . notf_message() . '</div>';
+	if ( has_filter( 'notf_notification_filter' ) ) {
+		$output = apply_filters( 'notf_notification_filter', $output, 10, 2 );
+	}
+	return $output;
+}
+function notf_display() {
+	echo notf_output_notification();
 }
 add_action( 'body_open', 'notf_display' );
+
+/*
+function my_test_filter( $output ) {
+	$output = '<span class="whoops-i-did-it-again" style="color: red;">'.notf_message().'</span>';
+	return $output;
+}
+add_filter( 'notf_notification_filter', 'my_test_filter' );
+*/
 
 function notf_css() {
 	if ( !is_admin() ) {
