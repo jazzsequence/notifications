@@ -28,7 +28,7 @@ Want to filter the output to customize how the notification gets displayed? Use 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. If your theme does not natively support the `body_open` hook, open your `header.php` and add the following immediately after the `<body>` tag:
 
-     <?php do_action( 'body_open' ); ?>
+`     <?php do_action( 'body_open' ); ?>`
 
 ##Changelog
 
