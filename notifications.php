@@ -113,7 +113,7 @@ function notf_styles() {
 			'label' => __( 'You should know...', 'notifications' ),
 			'value' => 'info'
 		),
-		'success' =>(
+		'success' => array(
 			'label' => __( 'Success!!', 'notifications' ),
 			'value' => 'success'
 		),
