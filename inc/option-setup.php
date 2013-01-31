@@ -14,7 +14,7 @@ function notf_custom_css_option() {
 					} else {
 						echo esc_attr($css_basetext);
 					} ?></textarea>
-					<label class="description" for="notf_settings[css]"><?php _e( 'Add custom CSS overrides to your notification style.  Intended for advanced users with a good working knowledge of <abbr title="Cascading Style Sheets">CSS</abbr>. Use the <code>.notification</code> class to style your notification unless you\'ve set custom classes. If custom CSS is used, notification style will be disabled.', 'notifications' ); ?></label>
+					<label class="description" for="notf_settings[css]"><?php _e( 'Add custom CSS to your notification style.  Intended for advanced users with a good working knowledge of <abbr title="Cascading Style Sheets">CSS</abbr>. Use the <code>.notification</code> class or your custom classes to style your notifications.', 'notifications' ); ?></label>
 				</td>
 			</tr>
 		<?php

@@ -101,13 +101,57 @@ function notf_styles() {
 			'label' => __( 'Default', 'notifications' ),
 			'value' => 'default'
 		),
+		'cool' => array(
+			'label' => __( 'Something cool', 'notifications' ),
+			'value' => 'cool'
+		),
+		'metallic' => array(
+			'label' => __( 'Metallic', 'notifications' ),
+			'value' => 'metallic'
+		),
+		'gray' => array(
+			'label' => __( 'Any color, as long as it\'s gray', 'notifications' ),
+			'value' => 'gray'
+		),
+		'hot' => array(
+			'label' => __( 'A real hot one', 'notifications' ),
+			'value' => 'hot'
+		),
+		'warm' => array(
+			'label' => __( 'Getting warmer', 'notifications' ),
+			'value' => 'warm'
+		),
+		'lemon' => array(
+			'label' => __( 'Lemon', 'notifications' ),
+			'value' => 'lemon'
+		),
+		'orange' => array(
+			'label' => __( 'Orange', 'notifications' ),
+			'value' => 'orange'
+		),
+		'plain' => array(
+			'label' => __( 'Plain Jane', 'notifications' ),
+			'value' => 'plain'
+		),
+		'pressed' => array(
+			'label' => __( 'Press\'d!', 'notifications' ),
+			'value' => 'pressed'
+		),
+		'tax' => array(
+			'label' => __( 'Tax Return', 'notifications' ),
+			'value' => 'tax'
+		),
+		'idea' => array(
+			'label' => __( 'Bright Idea', 'notifications' ),
+			'value' => 'idea'
+		),
 		'alert' => array(
 			'label' => __( 'Alert!', 'notifications' ),
 			'value' => 'alert'
 		),
 		'warning' => array(
 			'label' => __( 'Something bad', 'notifications' ),
-			'value' => 'warning'
+			'value' => 'error'
 		),
 		'info' => array(
 			'label' => __( 'You should know...', 'notifications' ),
@@ -182,15 +226,9 @@ function notf_output_notification() {
 	} else {
 		$custom_class = $defaults['class'];
 	}
-	if ( !$options['css'] || $options['css'] == '' || $options['css'] == '/* add your custom css here */' ) {
-		if ( $options['style'] ) {
-			$style = $options['style'];
-		} else {
-			$style = $defaults['style'];
-		}
-	} else {
-		$style = null;
-	}
+	$style = null;
+	if ( $options['style'] )
+		$style = $options['style'];
 
 	$output = "<div class=\"notification $custom_class $style\">" . notf_message() . "</div>";
 
