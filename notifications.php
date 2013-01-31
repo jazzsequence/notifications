@@ -168,6 +168,10 @@ function notf_styles() {
 			'label' => __( 'Press\'d!', 'notifications' ),
 			'value' => 'pressed'
 		),
+		'admin' => array(
+			'label' => __( 'Another admin bar', 'notifications' ),
+			'value' => 'admin'
+		),
 		'tax' => array(
 			'label' => __( 'Tax Return', 'notifications' ),
 			'value' => 'tax'

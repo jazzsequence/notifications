@@ -147,3 +147,17 @@
 	background: -ms-linear-gradient(top, #ffa84c 0%,#ff7b0d 100%); /* IE10+ */
 	background: linear-gradient(to bottom, #ffa84c 0%,#ff7b0d 100%); /* W3C */
 }
+.admin {
+	color: #ccc;
+	font-size: 13px;
+	border-top: 1px solid;
+	border-color: #555;
+	-moz-box-shadow: 1px 0px 1px #333;
+	box-shadow: 1px 0px 1px #333;
+	background: #464646;
+	background: -webkit-gradient(linear,left bottom,left top,color-stop(0,#373737),color-stop(18%,#464646));
+	background: -webkit-linear-gradient(bottom,#373737 0,#464646 5px);
+	background: -moz-linear-gradient(bottom,#373737 0,#464646 5px);
+	background: -o-linear-gradient(bottom,#373737 0,#464646 5px);
+	background: linear-gradient(to top,#373737 0,#464646 5px);
+}
