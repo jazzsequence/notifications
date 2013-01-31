@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * Custom CSS option
+ * @since 1.0
+ * @uses notf_defaults
+ * @uses get_option
+ * @uses wp_kses
+ * @author Chris Reynolds
+ * displays textarea for custom CSS
+ */
 function notf_custom_css_option() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
@@ -23,6 +31,15 @@ function notf_custom_css_option() {
 		echo $css;
 }
 
+/**
+ * Style options
+ * @since 1.0
+ * @uses notf_defaults
+ * @uses get_option
+ * @uses notf_styles
+ * @author Chris Reynolds
+ * displays notification default styles
+ */
 function notf_style_option() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
@@ -50,6 +67,14 @@ function notf_style_option() {
 	echo $style;
 }
 
+/**
+ * Notification custom class option
+ * @since 1.0
+ * @uses notf_defaults
+ * @uses get_option
+ * @author Chris Reynolds
+ * displays input box for custom css class
+ */
 function notf_class_option() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
@@ -68,6 +93,15 @@ function notf_class_option() {
 	echo $class;
 }
 
+/**
+ * Do options
+ * @since 1.0
+ * @uses notf_style_option
+ * @uses notf_class_option
+ * @uses notf_custom_css_option
+ * @author Chris Reynolds
+ * does all the stuff in an options page table
+ */
 function notf_do_options() {
 	echo '<table class="form-table">';
 	notf_style_option();
