@@ -118,7 +118,7 @@ function notf_styles() {
 			'value' => 'success'
 		),
 		'none' => array(
-			'label' => __( 'None', 'notifications' )
+			'label' => __( 'None', 'notifications' ),
 			'value' => null
 		)
 	);
