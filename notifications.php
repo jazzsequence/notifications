@@ -1,19 +1,25 @@
 <?php
 /*
 	Plugin Name: Notifications
+	Plugin URI: http://museumthemes.com/notifications/
+	Description: Easy, customizable notifications for your WordPress site
+	Version: 1.0
+	Author: Chris Reynolds
+	Author URI: http://jazzsequence.com
+	License: GPL3
 */
 
 /**
- * NOTF_PLUGIN_PATH
+ * Path definitions
  * @author Chris Reynolds
  * @since 1.0
- * this creates a global value for the plugin path we can use for the menu icons later
+ * creates some global values for the plugin path we can use for the menu icons and other things later
  */
 define('NOTF_PLUGIN_PATH',WP_PLUGIN_URL.'/'.str_replace(basename( __FILE__),"",plugin_basename(__FILE__)));
 define('NOTF_PLUGIN_DIR',WP_PLUGIN_DIR.'/'.str_replace(basename( __FILE__), "", plugin_basename(__FILE__)));
 
 /**
- * Testimonials Post Type
+ * Notifications Post Type
  * @author Chris Reynolds
  * @link http://justintadlock.com/archives/2010/04/29/custom-post-types-in-wordpress
  * @since 1.0
@@ -51,20 +57,39 @@ function notf_post_type_notifications() {
 
 	register_post_type( 'notf_notifications', $args );
 }
-
-/* add the custom post type */
 add_action( 'init', 'notf_post_type_notifications', 0 );
 
+/**
+ * Settings init
+ * @since 1.0
+ * @uses register_setting
+ * @author Chris Reynolds
+ * initializes the options
+ */
 function notf_settings_init() {
 	register_setting( 'notf_settings', 'notf_settings', 'notf_validate_settings' );
 }
 add_action( 'admin_init', 'notf_settings_init' );
 
+/**
+ * Add options page
+ * @since 1.0
+ * @uses add_submenu_page
+ * @author Chris Reynolds
+ * adds the options page under the Notifications post type
+ */
 function notf_add_options_page() {
 	$page = add_submenu_page( 'edit.php?post_type=notf_notifications', __( 'Notifications Options', 'notifications' ), __( 'Options', 'notifications' ), 'administrator', 'notf_settings', 'notf_settings_page' );
 }
 add_action( 'admin_menu', 'notf_add_options_page' );
 
+/**
+ * Notifications settings page
+ * @since 1.0
+ * @uses notf_do_options
+ * @author Chris Reynolds
+ * renders the actual options page
+ */
 function notf_settings_page() {
 	if ( !isset( $_REQUEST['settings-updated'] ) )
 		$_REQUEST['settings-updated'] = false;
@@ -95,6 +120,12 @@ function notf_settings_page() {
 	<?php
 }
 
+/**
+ * Notifications styles
+ * @since 1.0
+ * @author Chris Reynolds
+ * options array for styles
+ */
 function notf_styles() {
 	$notf_styles = array(
 		'default' => array(
@@ -169,6 +200,12 @@ function notf_styles() {
 	return $notf_styles;
 }
 
+/**
+ * Notifications defaults
+ * @since 1.0
+ * @author Chris Reynolds
+ * default options
+ */
 function notf_defaults() {
 	$notf_defaults = array(
 		'style' => 'default',
@@ -178,6 +215,13 @@ function notf_defaults() {
 	return $notf_defaults;
 }
 
+/**
+ * Validate settings
+ * @since 1.0
+ * @uses wp_filter_nohtml_kses
+ * @author Chris Reynolds
+ * escapes any bad data
+ */
 function notf_validate_settings( $input ) {
 	if ( !array_key_exists( $input['style'], notf_styles() ) )
 		$input['style'] = $input['style'];
@@ -189,12 +233,11 @@ function notf_validate_settings( $input ) {
 }
 /**
  * Change default title
- * Changes the default title on notification posts
- * @author Chris Reynolds
- * @since 0.1
+ * @since 1.0
  * @uses get_current_screen
- * @uses enter_title_here
+ * @author Chris Reynolds
  * @link http://wp-snippets.com/change-enter-title-here-text-for-custom-post-type/
+ * Changes the default title on notification posts
  */
 function notf_change_default_title( $title ){
      $screen = get_current_screen();
@@ -205,6 +248,13 @@ function notf_change_default_title( $title ){
 }
 add_filter( 'enter_title_here', 'notf_change_default_title' );
 
+/**
+ * Notification message
+ * @since 1.0
+ * @uses get_posts
+ * @author Chris Reynolds
+ * returns the most recent notification
+ */
 function notf_message() {
 	$args = array(
 		'post_type' => 'notf_notifications',
@@ -218,6 +268,15 @@ function notf_message() {
 	return $message;
 }
 
+/**
+ * Output notification
+ * @since 1.0
+ * @uses get_option
+ * @uses notf_defaults
+ * @uses notf_message
+ * @uses apply_filters
+ * returns the full notification message and formatting
+ */
 function notf_output_notification() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
@@ -238,6 +297,14 @@ function notf_output_notification() {
 	return $output;
 }
 
+/**
+ * Custom CSS
+ * @since 1.0
+ * @uses get_option
+ * @uses notf_defaults
+ * @author Chris Reynolds
+ * outputs the custom CSS if any exists
+ */
 function notf_custom_css_output() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
@@ -250,6 +317,28 @@ function notf_custom_css_output() {
 }
 add_action( 'wp_head', 'notf_custom_css_output' );
 
+/**
+ * Notification CSS
+ * @since 1.0
+ * @uses wp_enqueue_style
+ * @author Chris Reynolds
+ * enqueues notf-css.css
+ */
+
+function notf_css() {
+	if ( !is_admin() ) {
+		wp_enqueue_style( 'notf-css', NOTF_PLUGIN_PATH . '/css/notf-css.css' );
+	}
+}
+add_action( 'wp_head', 'notf_css' );
+
+/**
+ * Display notification
+ * @since 1.0
+ * @uses notf_output_notification
+ * @author Chris Reynolds
+ * hooks notification into the body_open action and displays the notification
+ */
 function notf_display() {
 	echo notf_output_notification();
 }
@@ -264,10 +353,3 @@ function my_test_filter( $output ) {
 }
 add_filter( 'notf_notification_filter', 'my_test_filter' );
 */
-
-function notf_css() {
-	if ( !is_admin() ) {
-		wp_enqueue_style( 'notf-css', NOTF_PLUGIN_PATH . '/css/notf-css.css' );
-	}
-}
-add_action( 'wp_head', 'notf_css' );
