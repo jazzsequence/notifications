@@ -348,6 +348,37 @@ function notf_display() {
 }
 add_action( 'body_open', 'notf_display' );
 
+/**
+ * Notification icons
+ * deals with the custom icons for the notifications pages
+ * @since 1.0
+ * @uses admin_head
+ * @author Chris Reynolds
+ */
+function notf_icons() {
+    ?>
+    <style type="text/css" media="screen">
+        #menu-posts-notf_notifications .wp-menu-image {
+			background: url(<?php echo NOTF_PLUGIN_PATH; ?>/img/notification16.png) no-repeat 6px 6px !important;
+			opacity: 0.4;
+			filter:alpha(opacity=40); /* For IE8 and earlier */
+        }
+		#menu-posts-notf_notifications:hover .wp-menu-image {
+			background: url(<?php echo NOTF_PLUGIN_PATH; ?>/img/notification16.png) no-repeat 6px 6px !important;
+			opacity: 1.0;
+			filter:alpha(opacity=100);
+        }
+		#menu-posts-notf_notifications.wp-has-current-submenu .wp-menu-image {
+			background: url(<?php echo NOTF_PLUGIN_PATH; ?>/img/notification16-inv.png) no-repeat 6px 6px !important;
+			opacity: 1.0;
+			filter:alpha(opacity=100);
+		}
+		#icon-edit.icon32-posts-notf_notifications { background: url(<?php echo NOTF_PLUGIN_PATH; ?>/img/notification32.png) no-repeat!important; }
+    </style>
+<?php
+}
+add_action( 'admin_head', 'notf_icons' );
+
 /*
 // this is an example filter for the notification output
 // you can use this to build your own filter and change the output of the notifications
