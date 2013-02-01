@@ -252,7 +252,7 @@ function notf_change_default_title( $title ){
 }
 add_filter( 'enter_title_here', 'notf_change_default_title' );
 
-
+/*
 function notf_remove_permalink($return, $id, $new_title, $new_slug){
 	global $post;
 	if ( $post->post_type == 'notf_notifications' ) {
@@ -262,7 +262,7 @@ function notf_remove_permalink($return, $id, $new_title, $new_slug){
 	return $button;
 }
 add_filter('get_sample_permalink_html', 'notf_remove_permalink', '',4);
-
+*/
 /**
  * Notification message
  * @since 1.0
