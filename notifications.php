@@ -252,17 +252,24 @@ function notf_change_default_title( $title ){
 }
 add_filter( 'enter_title_here', 'notf_change_default_title' );
 
-/*
+/**
+ * Remove permalink
+ * @since 1.0
+ * @uses get_sample_permalink_html
+ * @uses get_post_type
+ * @author Chris Reynolds
+ * @link http://wordpress.stackexchange.com/questions/31627/removing-edit-permalink-view-custom-post-type-areas
+ * @link http://hitchhackerguide.com/2011/02/12/get_sample_permalink_html/
+ * this removes the permalink and view post from notifications, but not anything else
+ */
 function notf_remove_permalink($return, $id, $new_title, $new_slug){
 	global $post;
-	if ( $post->post_type == 'notf_notifications' ) {
-		$button = preg_replace('/<span id="edit-slug-buttons">.*<\/span>|<span id=\'view-post-btn\'>.*<\/span>/i', '', $return);
+	if ( 'notf_notifications' != get_post_type( $post->ID ) ) {
+		return $return;
 	}
-
-	return $button;
 }
 add_filter('get_sample_permalink_html', 'notf_remove_permalink', '',4);
-*/
+
 /**
  * Notification message
  * @since 1.0
