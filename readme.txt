@@ -39,6 +39,46 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 `<?php do_action( 'body_open' ); ?>`
 
+== Screenshots ==
+
+= 17 different pre-made styles =
+
+1. Default style
+
+2. Something cool
+
+3. Metallic
+
+4. Any color, as long as it's gray
+
+5. A real hot one
+
+6. Getting warmer
+
+7. Lemon
+
+8. Orange
+
+9. Plain Jane
+
+10. Press'd!
+
+11. Another admin bar
+
+12. Tax Return
+
+13. Bright idea
+
+14. Alert!
+
+15. Something bad
+
+16. You should know…
+
+17. Success!!
+
+18. No styles
+
 == Changelog ==
 
 = 1.0 =
