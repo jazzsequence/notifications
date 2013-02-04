@@ -32,5 +32,8 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 ##Changelog
 
+###1.0.1
+* removes menu order (can conflict with other post types with same menu order)
+
 ###1.0
 * first public release

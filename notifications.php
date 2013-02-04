@@ -3,7 +3,7 @@
 	Plugin Name: Notifications
 	Plugin URI: http://museumthemes.com/notifications/
 	Description: Easy, customizable notifications for your WordPress site
-	Version: 1.0
+	Version: 1.0.1
 	Author: Chris Reynolds
 	Author URI: http://jazzsequence.com
 	License: GPL3
@@ -50,7 +50,6 @@ function notf_post_type_notifications() {
 		'rewrite' => false,
 		'capability_type' => 'post',
 		'hierarchical' => false,
-		'menu_position' => 15,
 		'supports' => array( 'title' ),
 		'exclude_from_search' => true
 	);

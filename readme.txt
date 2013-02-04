@@ -3,7 +3,7 @@ Contributors: jazzs3quence
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AWM2TG3D4HYQ6
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -80,6 +80,10 @@ Want to filter the output to customize how the notification gets displayed? Use 
 18. No styles
 
 == Changelog ==
+
+= 1.0.1 =
+
+* removes menu order (can conflict with other post types with same menu order)
 
 = 1.0 =
 
