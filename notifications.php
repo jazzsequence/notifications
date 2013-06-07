@@ -3,7 +3,7 @@
 	Plugin Name: Notifications
 	Plugin URI: http://museumthemes.com/notifications/
 	Description: Easy, customizable notifications for your WordPress site
-	Version: 1.0.1
+	Version: 1.1
 	Author: Chris Reynolds
 	Author URI: http://jazzsequence.com
 	License: GPL3
@@ -213,7 +213,8 @@ function notf_defaults() {
 	$notf_defaults = array(
 		'style' => 'default',
 		'css' => null,
-		'class' => null
+		'class' => null,
+		'sticky' => false
 	);
 	return $notf_defaults;
 }
@@ -229,6 +230,8 @@ function notf_validate_settings( $input ) {
 	if ( !array_key_exists( $input['style'], notf_styles() ) )
 		$input['style'] = $input['style'];
 
+	if ( isset($input['sticky']) )
+		$input['sticky'] = wp_filter_nohtml_kses( $input['sticky'] );
 	$input['class'] = wp_filter_nohtml_kses( $input['class'] );
 	$input['css'] = wp_filter_nohtml_kses( $input['css'] );
 
@@ -329,8 +332,13 @@ function notf_output_notification() {
 function notf_custom_css_output() {
 	$defaults = notf_defaults();
 	$options = get_option( 'notf_settings', $defaults );
-	if ( !empty( $options['css'] ) || $options['css'] == '' || $options['css'] == '/* add your custom css here */' ) {
+	if ( array_key_exists( 'sticky', $options ) || !empty( $options['css'] ) || $options['css'] == '' || $options['css'] == '/* add your custom css here */' ) {
 		$output = '<style type="text/css" media="print,screen">';
+		if ( array_key_exists( 'sticky', $options ) ) {
+			/* if the notification is sticky, stick it */
+			$output .= '.notification { position: fixed; top: 0; }';
+			$output .= '.logged-in .notification { top: 28px; }';
+		}
 		$output .= sanitize_text_field( $options['css'] );
 		$output .= '</style>';
 		echo $output;

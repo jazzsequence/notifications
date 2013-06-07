@@ -94,9 +94,36 @@ function notf_class_option() {
 }
 
 /**
+ * Notification sticky option
+ * @since 1.1
+ * @uses notf_defaults
+ * @uses get_option
+ * @author Chris Reynolds
+ * allows the notification to stick to the top of the page rather than scrolling with the page
+ */
+function notf_sticky_option() {
+	$defaults = notf_defaults();
+	$options = get_option( 'notf_settings', $defaults );
+
+	ob_start();
+	?>
+		<tr valign="top"><th scope="row"><?php _e( 'Stick to top', 'notifications' ); ?></th>
+			<td>
+				<label><input type="checkbox" name="notf_settings[sticky]" value="1" <?php if ( isset($options['sticky']) ) { checked( '1', $options['sticky'] ); } ?>  /> <?php _e( 'Notification is sticky', 'notifications' ); ?></label><br />
+				<label class="description" for="notf_settings[sticky]"><?php _e( 'If you would like the notification to be fixed at the top of the page, check this box. Otherwise, the notification will scroll with the page.', 'notifications' ); ?></label>
+			</td>
+		</tr>
+	<?php
+	$sticky = ob_get_contents();
+	ob_end_clean();
+	echo $sticky;
+}
+
+/**
  * Do options
  * @since 1.0
  * @uses notf_style_option
+ * @uses notf_sticky_option
  * @uses notf_class_option
  * @uses notf_custom_css_option
  * @author Chris Reynolds
@@ -105,6 +132,7 @@ function notf_class_option() {
 function notf_do_options() {
 	echo '<table class="form-table">';
 	notf_style_option();
+	notf_sticky_option();
 	notf_class_option();
 	notf_custom_css_option();
 	echo '</table>';
