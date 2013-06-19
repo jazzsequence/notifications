@@ -19,7 +19,7 @@ Want to filter the output to customize how the notification gets displayed? Use 
      	return $output;
      }
      add_filter( 'notf_notification_filter', 'my_test_filter' );
-     
+
 **Important:** Use the `notf_message` function in your filter to return the actual notification.
 
 ##Installation
@@ -31,6 +31,12 @@ Want to filter the output to customize how the notification gets displayed? Use 
 `     <?php do_action( 'body_open' ); ?>`
 
 ##Changelog
+
+### 1.1.1
+* fixes validation _doing_it_wrong()
+
+### 1.1
+* added sticky option, to stick the notification to the top of the page, rather than scrolling with the page.
 
 ###1.0.1
 * removes menu order (can conflict with other post types with same menu order)

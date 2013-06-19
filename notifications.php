@@ -3,7 +3,7 @@
 	Plugin Name: Notifications
 	Plugin URI: http://museumthemes.com/notifications/
 	Description: Easy, customizable notifications for your WordPress site
-	Version: 1.1
+	Version: 1.1.1
 	Author: Chris Reynolds
 	Author URI: http://jazzsequence.com
 	License: GPL3
@@ -228,7 +228,7 @@ function notf_defaults() {
  */
 function notf_validate_settings( $input ) {
 	if ( !array_key_exists( $input['style'], notf_styles() ) )
-		$input['style'] = $input['style'];
+		$input['style'] = null;
 
 	if ( isset($input['sticky']) )
 		$input['sticky'] = wp_filter_nohtml_kses( $input['sticky'] );
