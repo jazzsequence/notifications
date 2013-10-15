@@ -39,7 +39,7 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 1. Upload the plugin via FTP or the plugin uploader to your `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. If your theme does not natively support the `body_open` hook, open your `header.php` and add the following immediately after the `<body>` tag:
+3. If your theme does not natively support the `tha_body_top` hook, open your `header.php` and add the following immediately after the `<body>` tag:
 
 `<?php do_action( 'tha_body_top' ); ?>`
 
@@ -110,4 +110,4 @@ Want to filter the output to customize how the notification gets displayed? Use 
 = 1.1.2 =
 **Please update your themes to support the new `tha_body_top` action!**
 
-`<?php do_action( 'tha_body_top' ); ?>
+`<?php do_action( 'tha_body_top' ); ?>`

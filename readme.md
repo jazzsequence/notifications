@@ -8,6 +8,10 @@ How many times have you needed to display a notice across your site? Too many, i
 
 This plugin uses custom post types, so notifications are set up like mini-posts that we all know and love. Multiple controls, as well as a built-in filter, enable developers and casual users alike to easily customize the notification bar to your heart's content.
 
+**Update:** This plugin now supports the [Theme Hook Alliance](https://github.com/zamoose/themehookalliance) `tha_body_top` action. If you are using the `body_open` action in your child theme, please change this to `tha_body_top`, e.g.
+
+`do_action( 'tha_body_top' );`
+
 ##Usage
 
 Notifications looks for the `body_open` hook. This hook  was first [proposed on Trac](http://core.trac.wordpress.org/ticket/12563#comment:10) by [Andrew Nacin](https://twitter.com/nacin) as a way to hook into an action that fires immediately after the `<body>` tag in the code.
@@ -26,11 +30,14 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 1. Upload the plugin via FTP or the plugin uploader to your `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. If your theme does not natively support the `body_open` hook, open your `header.php` and add the following immediately after the `<body>` tag:
+3. If your theme does not natively support the `tha_body_top` hook, open your `header.php` and add the following immediately after the `<body>` tag:
 
-`     <?php do_action( 'body_open' ); ?>`
+`     <?php do_action( 'tha_body_top' ); ?>`
 
 ##Changelog
+
+###1.1.2
+* Updates support for [Theme Hook Alliance](https://github.com/zamoose/themehookalliance) action hook instead of arbitrary, theme-specific hooks.
 
 ### 1.1.1
 * fixes validation _doing_it_wrong()
@@ -43,3 +50,10 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 ###1.0
 * first public release
+
+##Upgrade Notice
+
+###1.1.2
+**Please update your themes to support the new `tha_body_top` action!**
+
+`<?php do_action( 'tha_body_top' ); ?>`
