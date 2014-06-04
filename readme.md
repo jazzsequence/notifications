@@ -36,6 +36,9 @@ Want to filter the output to customize how the notification gets displayed? Use 
 
 ##Changelog
 
+###1.1.3
+* Checks for messages before trying to output them (thanks [Daron Spence](http://github.com/Daronspence)!)
+
 ###1.1.2
 * Updates support for [Theme Hook Alliance](https://github.com/zamoose/themehookalliance) action hook instead of arbitrary, theme-specific hooks.
 

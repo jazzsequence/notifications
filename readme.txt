@@ -2,8 +2,8 @@
 Contributors: jazzs3quence
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AWM2TG3D4HYQ6
 Requires at least: 3.0
-Tested up to: 3.6.1
-Stable tag: 1.1.2
+Tested up to: 3.9.1
+Stable tag: 1.1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -84,6 +84,10 @@ Want to filter the output to customize how the notification gets displayed? Use 
 18. No styles
 
 == Changelog ==
+
+= 1.1.3 =
+
+* Checks for messages before trying to output them (thanks Daron Spence!)
 
 = 1.1.2 =
 
