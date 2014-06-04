@@ -289,7 +289,9 @@ function notf_message() {
 		$notf_id = $notification->ID;
 		$message = get_the_title( $notf_id );
 	}
-	return $message;
+	if ( $notifications ) {
+		return $message;
+	}
 }
 
 /**
@@ -318,7 +320,9 @@ function notf_output_notification() {
 	if ( has_filter( 'notf_notification_filter' ) ) {
 		$output = apply_filters( 'notf_notification_filter', $output, 10, 2 );
 	}
-	return $output;
+	if ( notf_message() ) {
+		return $output;
+	}
 }
 
 /**
