@@ -1,0 +1,14 @@
+{
+    "name": "jazzsequence/notifications",
+    "description": "A WordPress plugin to display a notification above your site that uses custom post types.",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Chris Reynolds",
+            "email": "chris@jazzsequence.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
